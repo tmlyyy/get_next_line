@@ -59,11 +59,11 @@ Every obsolete allocation is meticulously freed before replacement to prevent me
 
 ---
 
-## Compilation
+## Compilation & Testing
 
 Default compilation (Mandatory):
 ```bash
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c
+cc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c main.c
 ./a.out teste.txt
 
 ```
@@ -71,11 +71,15 @@ cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_
 Default compilation (Bonus):
 
 ```bash
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c
+cc -Wall -Wextra -Werror get_next_line_bonus.c get_next_line_utils_bonus.c main_bonus.c
 ./a.out teste.txt teste2.txt
 
 ```
+```bash
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line_bonus.c get_next_line_utils_bonus.c main_bonus.c
+./a.out teste.txt teste2.txt
 
+```
 Note: You can change BUFFER_SIZE to any positive integer (e.g., 1, 10, 9999) to test how the function handles different read chunks.
 
 ---
@@ -89,5 +93,4 @@ Note: You can change BUFFER_SIZE to any positive integer (e.g., 1, 10, 9999) to 
 
 ### AI Usage
 
-Artificial intelligence was used as a learning assistant to clarify C concepts, review the implementation, improve code readability, prepare documentation, and help understand the algorithm. AI also provided guidance on structuring the single static array approach for the bonus implementation. The implementation, debugging, refactoring, and final validation were completed manually.
-
+Artificial intelligence tools (Claude and Gemini) were used as learning assistants to clarify C concepts, review the implementation, improve code readability, prepare documentation, and help understand the algorithm. AI also provided guidance on structuring the single static array approach for the bonus implementation. The implementation, debugging, refactoring, and final validation were completed manually.
