@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thamoliv <thamoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/14 16:56:14 by thamoliv          #+#    #+#             */
-/*   Updated: 2026/07/14 16:56:19 by thamoliv         ###   ########.fr       */
+/*   Created: 2026/07/14 00:00:00 by thamoliv          #+#    #+#             */
+/*   Updated: 2026/07/14 00:00:00 by thamoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-
+ 
 char	*gnl_extract_line(char *s, int nl_pos)
 {
 	char	*line;
 	int		len;
 	int		i;
-
+ 
 	if (nl_pos == -1)
 		len = gnl_strlen(s);
 	else
@@ -34,13 +34,13 @@ char	*gnl_extract_line(char *s, int nl_pos)
 	line[i] = '\0';
 	return (line);
 }
-
+ 
 char	*gnl_extract_rest(char *s, int nl_pos)
 {
 	char	*rest;
 	int		len;
 	int		i;
-
+ 
 	if (nl_pos == -1)
 		return (free(s), NULL);
 	len = gnl_strlen(s);
@@ -57,19 +57,19 @@ char	*gnl_extract_rest(char *s, int nl_pos)
 	free(s);
 	return (rest);
 }
-
+ 
 char	*get_next_line(int fd)
 {
 	static char	*saved[MAX_FD];
 	int			nl_pos;
 	char		*line;
-
+ 
 	if (fd < 0 || fd >= MAX_FD)
 		return (NULL);
 	if (gnl_fill_buffer(fd, &saved[fd]) == -1)
 		return (free(saved[fd]), saved[fd] = NULL, NULL);
 	if (saved[fd] == NULL || saved[fd][0] == '\0')
-		return (NULL);
+		return (free(saved[fd]), saved[fd] = NULL, NULL);
 	nl_pos = gnl_has_nl(saved[fd]);
 	line = gnl_extract_line(saved[fd], nl_pos);
 	saved[fd] = gnl_extract_rest(saved[fd], nl_pos);
